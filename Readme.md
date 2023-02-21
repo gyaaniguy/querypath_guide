@@ -48,7 +48,8 @@ Generally this is the flow:
 | prevAll() | Select all previous siblings | Yes |
 | children() | Select elements immediately beneath this one | Yes |
 | deepest() | Select the deepest node or nodes beneath this one | No |
-|
+
+![stolen-querypath-image.gif](stolen-querypath-image.gif)
 
 > Observe: the traversing functions can accept css/xpath selectors to narrow down the search.
 
