@@ -54,4 +54,21 @@ Generally this is the flow:
 > Observe: the traversing functions can accept css/xpath selectors to narrow down the search.
 
 ## Advanced usage examples:
-TODO 
+
+###### Convert encoding of html page to utf-8
+```php
+htmlqp($html, 'body', array('convert_to_encoding' => 'utf-8'))->children('p.a');
+```
+
+###### Use chain of traversing functions to find nodes
+```php
+ $tr = $this->qp->top('body')->find('table[id="main"]')->find('tr:nth-child(3)');
+```
+Here `top('body')` gets the top most ancestor matching the selector. 
+The next find commands use css selectors.  
+Same can be written using an xpath
+```php
+    $tr = $this->qp->xpath('//body/table[@id="main"]/tr[3]');
+```
+
+TODO : add more examples as we find them
