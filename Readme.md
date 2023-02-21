@@ -49,10 +49,9 @@ Generally this is the flow:
 | children() | Select elements immediately beneath this one | Yes |
 | deepest() | Select the deepest node or nodes beneath this one | No |
 
-![stolen-querypath-image.gif](stolen-querypath-image.gif)
+![stolen-querypath-image](stolen-querypath-image.jpg)
 
 > Observe: the traversing functions can accept css/xpath selectors to narrow down the search.
 
 ## Advanced usage examples:
-
 TODO 
