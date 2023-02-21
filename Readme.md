@@ -10,6 +10,8 @@ Original is abandoned. Fork alive here: https://github.com/GravityPDF/querypath
 Article on ibm.com: [Archive.org  link](https://web.archive.org/web/20160723193833/http://www.ibm.com/developerworks/opensource/library/os-php-querypath/index.html?S_TACT=105AGX01&S_CMP=HP)  
  That link is now dead and un-googleable. So its content now can be freely stolen without guilt.
 
+ 
+API docs relevant to parsing: http://querypath.org/classes/QueryPath.DOMQuery.html
 
 
 ## Guide: 
@@ -53,6 +55,17 @@ Generally this is the flow:
 
 > Observe: the traversing functions can accept css/xpath selectors to narrow down the search.
 
+## Common functions to extract data from nodes
+```php
+text() // Get combined text contents of each element in the set of matched elements, including their descendants.
+attr('src') // Get value of an attribute with a given name.
+html() // Get HTML contents of matching node
+innerHtml() // Get the HTML contents INSIDE the node.
+```
+
+> IMPORTANT: If traversing functions match multiple nodes. The above functions will return data from first node.  
+ 
+Example: `find('a')` matches multiple links. `text()` will return text from first link.
 ## Advanced usage examples:
 
 ###### Convert encoding of html page to utf-8
@@ -62,13 +75,13 @@ htmlqp($html, 'body', array('convert_to_encoding' => 'utf-8'))->children('p.a');
 
 ###### Use chain of traversing functions to find nodes
 ```php
- $tr = $this->qp->top('body')->find('table[id="main"]')->find('tr:nth-child(3)');
+$tr = $this->qp->top('body')->find('table[id="main"]')->find('tr:nth-child(3)');
 ```
 Here `top('body')` gets the top most ancestor matching the selector. 
 The next find commands use css selectors.  
 Same can be written using an xpath
 ```php
-    $tr = $this->qp->xpath('//body/table[@id="main"]/tr[3]');
+$tr = $this->qp->xpath('//body/table[@id="main"]/tr[3]');
 ```
 
 TODO : add more examples as we find them
